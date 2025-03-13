@@ -1,0 +1,15 @@
+ROPGadgets:
+
+0x000000000040139c : pop r12 ; pop r13 ; pop r14 ; pop r15 ; ret
+0x000000000040139e : pop r13 ; pop r14 ; pop r15 ; ret
+0x00000000004013a0 : pop r14 ; pop r15 ; ret
+0x00000000004013a2 : pop r15 ; ret
+0x0000000000401180 : pop rax ; nop ; pop rbp ; ret
+0x000000000040139b : pop rbp ; pop r12 ; pop r13 ; pop r14 ; pop r15 ; ret
+0x000000000040139f : pop rbp ; pop r14 ; pop r15 ; ret
+0x000000000040113d : pop rbp ; ret
+0x000000000040139a : pop rbx ; pop rbp ; pop r12 ; pop r13 ; pop r14 ; pop r15 ; ret
+0x00000000004013a3 : pop rdi ; ret
+0x000000000040117f : pop rdx ; pop rax ; nop ; pop rbp ; ret
+0x00000000004013a1 : pop rsi ; pop r15 ; ret
+0x000000000040139d : pop rsp ; pop r13 ; pop r14 ; pop r15 ; ret

